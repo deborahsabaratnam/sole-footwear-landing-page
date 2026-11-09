@@ -55,6 +55,10 @@ body {
     color: #bbbb;
 }
 
+.menu-toggle {
+    display: none;
+}
+
 .hero {
     display: flex;
     align-items: center;
@@ -100,7 +104,7 @@ body {
 }
 
 .hero-image img {
-    width: 700px;
+    width: 100%;
     height: auto;
     border-radius: 10px;
     display: block;
@@ -144,9 +148,9 @@ body {
 }
 
 .product-card img {
+    display: block;
     width: 100%;
-    height: 250px;
-    object-fit: cover;
+    height: auto;
     border-radius: 6px;
     margin-bottom: 20px;
 }
@@ -280,6 +284,7 @@ body {
     text-decoration: none;
     border-radius: 6px;
     transition: background-color 0.3s ease;
+    margin: 1px;
 }
 
 .lifestyle-btn:hover {
@@ -288,10 +293,8 @@ body {
 
 .site-header {
     background-image:
-        linear-gradient(
-            rgba(0, 0, 0, 0.35),
-            rgba(0, 0, 0, 0.35)
-        ),
+        linear-gradient(rgba(0, 0, 0, 0.35),
+            rgba(0, 0, 0, 0.35)),
         url("images/lifestyle.webp");
 
     background-size: cover;
@@ -310,7 +313,6 @@ body {
     margin: 0 auto;
     position: relative;
     z-index: 1;
-    background-position: center bottom;
 }
 
 .footer {
@@ -443,34 +445,54 @@ img {
 /* Mobile responsiveness */
 @media (max-width: 600px) {
 
-    /* Header and lifestyle banner */
-    .site-header {
-        width: calc(100% - 24px);
-        margin: 12px auto;
-        padding: 12px;
-        border-radius: 20px;
-    }
-
     /* Navigation bar */
     .navbar {
-        flex-direction: column;
-        gap: 14px;
-        padding: 16px 12px;
+        flex-direction: row;
+        justify-content: space-between;
+        padding: 8px 10px;
+        gap: 0;
     }
 
     .logo {
         position: static;
-        font-size: 24px;
+        font-size: 14px;
+    }
+
+    .menu-toggle {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        gap: 3px;
+        background: none;
+        border: none;
+        cursor: pointer;
+        padding: 5px;
+    }
+
+    .menu-toggle span {
+        display: block;
+        width: 24px;
+        height: 2px;
+        background-color: white;
+        border-radius: 2px;
     }
 
     .nav-links {
-        gap: 14px;
-        flex-wrap: wrap;
-        justify-content: center;
+        display: none;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        width: 100%;
+        padding: 20px;
+        background-color: #171717;
+        border-radius: 0 0 16px 16px;
+        flex-direction: column;
+        align-items: center;
+        gap: 20px;
     }
 
-    .nav-links a {
-        font-size: 12px;
+    .nav-links.active {
+        display: flex;
     }
 
     /* Lifestyle banner */
@@ -486,6 +508,16 @@ img {
     .lifestyle-content p {
         font-size: 15px;
         line-height: 1.6;
+    }
+
+    .site-header {
+        background-image:
+            linear-gradient(rgba(0, 0, 0, 0.35),
+                rgba(0, 0, 0, 0.35)),
+            url("images/lifestyle-mob.webp");
+
+        background-size: cover;
+        background-position: center;
     }
 
     /* Featured shoe */

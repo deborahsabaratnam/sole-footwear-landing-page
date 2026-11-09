@@ -15,8 +15,16 @@
 <body>
     <header id="home" class="site-header">
         <nav class='navbar'>
-            <a href="#home" class="logo"> SOLE.</a>
-            <ul class="nav-links">
+            <a href="#home" class="logo">SOLE.</a>
+
+            <button class="menu-toggle" type="button" aria-label="Toggle navigation" aria-expanded="false"
+                aria-controls="nav-links">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+
+            <ul class="nav-links" id="nav-links">
                 <li><a href="#home">HOME</a></li>
                 <li><a href="#products">PRODUCTS</a></li>
                 <li><a href="#about">ABOUT</a></li>
@@ -205,6 +213,22 @@
 
 
     </footer>
+    <script>
+        const menuToggle = document.querySelector(".menu-toggle");
+        const navLinks = document.querySelector(".nav-links");
+
+        menuToggle.addEventListener("click", () => {
+            const isOpen = navLinks.classList.toggle("active");
+            menuToggle.setAttribute("aria-expanded", isOpen);
+        });
+
+        navLinks.querySelectorAll("a").forEach(link => {
+            link.addEventListener("click", () => {
+                navLinks.classList.remove("active");
+                menuToggle.setAttribute("aria-expanded", "false");
+            });
+        });
+    </script>
 
 </body>
 
